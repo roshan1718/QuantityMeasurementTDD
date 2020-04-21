@@ -14,7 +14,7 @@ public class EqualityCheck {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        EqualityCheck that = (EqualityCheck) o;
-        return Double.compare(that.value, value) == 0;
+        EqualityCheck EqualityCheck = (EqualityCheck) o;
+        return Double.compare(EqualityCheck.value, value) == 0 && unitValue == EqualityCheck.unitValue;
     }
 }
