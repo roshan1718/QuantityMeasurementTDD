@@ -29,4 +29,12 @@ public class QuantityMeasurementTest {
         Assert.assertEquals(false, isEqual);
     }
 
+    @Test
+    public void givenSameReferance_WhenEqual_ReturnTrue() {
+        Unit value1 = new Unit(0);
+        boolean isEqual = this.measurement.compare(value1, value1);
+        Assert.assertEquals(true, isEqual);
+    }
+
+
 }
