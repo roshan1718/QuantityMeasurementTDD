@@ -10,6 +10,6 @@ public class QuantityMeasurementException extends Exception {
     }
 
     public enum ExceptionType {
-        NULL_POINTER
+        NULL_POINTER_EXCEPTION
     }
 }

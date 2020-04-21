@@ -5,7 +5,7 @@ import org.junit.Test;
 
 public class QuantityMeasurementTest {
     Measurement measurement = new Measurement();
-
+    //TEST FOR FEET
     @Test
     public void givenFeetValue_WhenEqual_ReturnTrue() throws QuantityMeasurementException {
         EqualityCheck value1 = new  EqualityCheck(1.0, Unit.FEET);
@@ -28,7 +28,7 @@ public class QuantityMeasurementTest {
         try {
             boolean isEqual = measurement.compare(value1, null);
         } catch (QuantityMeasurementException e) {
-            Assert.assertEquals(QuantityMeasurementException.ExceptionType.NULL_POINTER, e.type);
+            Assert.assertEquals(QuantityMeasurementException.ExceptionType.NULL_POINTER_EXCEPTION, e.type);
         }
     }
 
@@ -54,5 +54,20 @@ public class QuantityMeasurementTest {
         Assert.assertTrue(isEqual);
     }
 
-
+    //TEST FOR INCH
+    @Test
+    public void givenInchNull_WhenNotEqual_ReturnFalse() {
+        EqualityCheck value1 = new EqualityCheck(1.0, Unit.INCH);
+        try {
+            boolean isEqual = measurement.compare(value1, null);
+        } catch (QuantityMeasurementException e) {
+            Assert.assertEquals(QuantityMeasurementException.ExceptionType.NULL_POINTER_EXCEPTION, e.type);
+        }
+    }
+    @Test
+    public void givenSameInchReferance_WhenEqual_ReturnTrue() throws QuantityMeasurementException {
+        EqualityCheck value1 = new EqualityCheck(1.0, Unit.INCH);
+        boolean isEqual = measurement.compare(value1, value1);
+        Assert.assertEquals(true, isEqual);
+    }
 }
