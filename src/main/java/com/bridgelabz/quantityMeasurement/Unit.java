@@ -1,18 +1,19 @@
 package com.bridgelabz.quantityMeasurement;
 
-public class Unit {
+public enum Unit {
+    FEET(12),
+    INCH(1);
 
-    public double unitValue;
+    public final double value;
 
-    public Unit(double feetValue) {
-        this.unitValue = feetValue;
+    Unit(double value) {
+        this.value = value;
+    }
+    public double getValue() {
+        return value;
+    }
+    public double getConvertedValue() {
+        return value;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Unit that = (Unit) o;
-        return Double.compare(that.unitValue, unitValue) == 0;
-    }
 }
