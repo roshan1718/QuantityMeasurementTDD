@@ -36,5 +36,13 @@ public class QuantityMeasurementTest {
         Assert.assertEquals(true, isEqual);
     }
 
+    @Test
+    public void givenSameType_WhenEqual_ReturnTrue() {
+        Unit value1 = new Unit(1);
+        Unit value2 = new Unit(1);
+        boolean isEqual = this.measurement.compare(value1, value2);
+        Assert.assertEquals(true, isEqual);
+    }
+
 
 }
