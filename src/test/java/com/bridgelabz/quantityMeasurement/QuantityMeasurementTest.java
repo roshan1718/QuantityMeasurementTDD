@@ -43,6 +43,13 @@ public class QuantityMeasurementTest {
         boolean isEqual = this.measurement.compare(value1, value2);
         Assert.assertEquals(true, isEqual);
     }
+    @Test
+    public void givenSameFeetValue_WhenEqual_ReturnTrue() {
+        Unit value1 = new Unit(12);
+        Unit value2 = new Unit(12);
+        boolean isEqual = this.measurement.compare(value1, value2);
+        Assert.assertTrue(isEqual);
+    }
 
 
 }
