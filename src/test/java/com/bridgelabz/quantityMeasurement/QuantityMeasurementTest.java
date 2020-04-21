@@ -14,4 +14,19 @@ public class QuantityMeasurementTest {
         Assert.assertEquals(true, isEqual);
     }
 
+    @Test
+    public void givenFeetValue_WhenNotEqual_ReturnTrue() {
+        Unit value1 = new Unit(0);
+        Unit value2 = new Unit(1);
+        boolean isEqual = this.measurement.compare(value1, value2);
+        Assert.assertNotEquals(true, isEqual);
+    }
+
+    @Test
+    public void givenNullValue_WhenNotEqual_ReturnFalse() {
+        Unit value1 = new Unit(0);
+        boolean isEqual = this.measurement.compare(value1, null);
+        Assert.assertEquals(false, isEqual);
+    }
+
 }
