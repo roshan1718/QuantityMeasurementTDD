@@ -6,7 +6,7 @@ public class EqualityCheck {
     private final Unit unitValue;
 
     public EqualityCheck(double value, Unit unitValue) {
-        this.value = value * unitValue.getValue();
+        this.value = value * unitValue.getConvertedValue();
         this.unitValue = unitValue;
     }
 
@@ -16,6 +16,15 @@ public class EqualityCheck {
             throw new QuantityMeasurementException(QuantityMeasurementException.
                     ExceptionType.NULL_POINTER_EXCEPTION, "Null Object");
         return value1.equals(value2);
+    }
+
+
+    public static double addition(EqualityCheck value1, EqualityCheck value2) {
+        return value1.getValue()+value2.getValue();
+    }
+
+    private double getValue() {
+        return value;
     }
 
     @Override

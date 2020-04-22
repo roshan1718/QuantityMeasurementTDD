@@ -4,7 +4,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class QuantityMeasurementTest {
-     //TEST FOR FEET
+
+    //TEST FOR FEET
     @Test
     public void givenFeetValue_WhenEqual_ReturnTrue() throws QuantityMeasurementException {
         EqualityCheck value1 = new  EqualityCheck(1.0, Unit.FEET);
@@ -12,7 +13,6 @@ public class QuantityMeasurementTest {
         boolean isEqual = EqualityCheck.compare(value1, value2);
         Assert.assertTrue(isEqual);
     }
-
     @Test
     public void givenFeetValue_WhenNotEqual_ReturnTrue() throws QuantityMeasurementException {
         EqualityCheck value1 = new EqualityCheck(1.0, Unit.FEET);
@@ -20,7 +20,6 @@ public class QuantityMeasurementTest {
         boolean isEqual = EqualityCheck.compare(value1, value2);
         Assert.assertFalse(isEqual);
     }
-
     @Test
     public void givenNullValue_WhenNotEqual_ReturnFalse() {
         EqualityCheck value1 = new EqualityCheck(1.0, Unit.FEET);
@@ -30,14 +29,12 @@ public class QuantityMeasurementTest {
             Assert.assertEquals(QuantityMeasurementException.ExceptionType.NULL_POINTER_EXCEPTION, e.type);
         }
     }
-
     @Test
     public void givenSameReferance_WhenEqual_ReturnTrue() throws QuantityMeasurementException {
         EqualityCheck value1 = new EqualityCheck(1.0, Unit.FEET);
         boolean isEqual = EqualityCheck.compare(value1, value1);
         Assert.assertTrue(isEqual);
     }
-
     @Test
     public void givenSameType_WhenEqual_ReturnTrue() throws QuantityMeasurementException {
         EqualityCheck value1 = new EqualityCheck(1, Unit.FEET);
@@ -90,7 +87,6 @@ public class QuantityMeasurementTest {
         boolean isEqual = EqualityCheck.compare(value1, value2);
         Assert.assertTrue(isEqual);
     }
-
     @Test
     public void givenFeetAndInch_WhenResultEqual_ReturnTrue() throws QuantityMeasurementException {
         EqualityCheck value1 = new EqualityCheck(1.0, Unit.FEET);
@@ -98,7 +94,6 @@ public class QuantityMeasurementTest {
         boolean isEqual = EqualityCheck.compare(value1, value2);
         Assert.assertTrue(isEqual);
     }
-
     @Test
     public void given1FeetAnd1Inch_WhenNotEqual_ReturnFalse() throws QuantityMeasurementException {
         EqualityCheck value1 = new EqualityCheck(1.0, Unit.FEET);
@@ -113,7 +108,6 @@ public class QuantityMeasurementTest {
         boolean isEqual = EqualityCheck.compare(value1, value2);
         Assert.assertTrue(isEqual);
     }
-
     @Test
     public void given1InchAnd1Feet_WhenNotEqual_ReturnFalse() throws QuantityMeasurementException {
         EqualityCheck value1 = new EqualityCheck(1.0, Unit.INCH);
@@ -165,6 +159,7 @@ public class QuantityMeasurementTest {
         boolean isEqual = EqualityCheck.compare(value1, value2);
         Assert.assertTrue(isEqual);
     }
+
     //TEST FOR CENTIMETER
     @Test
     public void given2InchAnd5Centimeter_WhenEquals_ReturnTrue() throws QuantityMeasurementException {
@@ -172,6 +167,15 @@ public class QuantityMeasurementTest {
         EqualityCheck value2 = new EqualityCheck(5.0, Unit.CENTIMETER);
         boolean isEqual = EqualityCheck.compare(value1, value2);
         Assert.assertTrue(isEqual);
+    }
+
+    // TEST FOR ADDITION OF LENGTHS
+    @Test
+    public void givenInchAndInch_WhenGetAdded_ReturnResult() throws QuantityMeasurementException {
+        EqualityCheck value1 = new EqualityCheck(2.0, Unit.INCH);
+        EqualityCheck value2 = new EqualityCheck(2.0, Unit.INCH);
+        double result = EqualityCheck.addition(value1, value2);
+        Assert.assertEquals(4.0, result, 0);
     }
 
 }
