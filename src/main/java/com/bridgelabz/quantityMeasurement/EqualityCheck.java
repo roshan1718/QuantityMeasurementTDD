@@ -2,7 +2,7 @@ package com.bridgelabz.quantityMeasurement;
 
 public class EqualityCheck {
 
-    private final double value;
+    public double value;
     private final Unit unitValue;
 
     public EqualityCheck(double value, Unit unitValue) {
@@ -20,12 +20,9 @@ public class EqualityCheck {
 
 
     public static double addition(EqualityCheck value1, EqualityCheck value2) {
-        return value1.getValue()+value2.getValue();
+        return value1.value+value2.value;
     }
 
-    private double getValue() {
-        return value;
-    }
 
     @Override
     public boolean equals(Object o) {
