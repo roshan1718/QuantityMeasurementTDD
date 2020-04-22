@@ -91,5 +91,12 @@ public class QuantityMeasurementTest {
         Assert.assertEquals(true, isEqual);
     }
 
+    @Test
+    public void givenFeetAndInch_WhenResultEqual_ReturnTrue() throws QuantityMeasurementException {
+        EqualityCheck value1 = new EqualityCheck(1.0, Unit.FEET);
+        EqualityCheck value2 = new EqualityCheck(12.0, Unit.INCH);
+        boolean isEqual = EqualityCheck.compare(value1, value2);
+        Assert.assertEquals(true, isEqual);
+    }
 
 }
