@@ -121,6 +121,8 @@ public class QuantityMeasurementTest {
         boolean isEqual = EqualityCheck.compare(value1, value2);
         Assert.assertFalse(isEqual);
     }
+
+    // TEST FOR YARD
     @Test
     public void given3FeetAnd1Yard_WhenEquals_ReturnTrue() throws QuantityMeasurementException {
         EqualityCheck value1 = new EqualityCheck(3.0, Unit.FEET);
@@ -156,4 +158,12 @@ public class QuantityMeasurementTest {
         boolean isEqual = EqualityCheck.compare(value1, value2);
         Assert.assertTrue(isEqual);
     }
+    @Test
+    public void given1YardAnd3Feet_WhenEquals_ReturnTrue() throws QuantityMeasurementException {
+        EqualityCheck value1 = new EqualityCheck(3.0, Unit.FEET);
+        EqualityCheck value2 = new EqualityCheck(1.0, Unit.YARD);
+        boolean isEqual = EqualityCheck.compare(value1, value2);
+        Assert.assertTrue(isEqual);
+    }
+
 }
