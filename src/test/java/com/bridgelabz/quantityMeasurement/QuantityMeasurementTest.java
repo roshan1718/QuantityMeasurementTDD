@@ -237,5 +237,12 @@ public class QuantityMeasurementTest {
         boolean isEqual = EqualityCheck.compare(value1, value2);
         Assert.assertTrue(isEqual);
     }
+    @Test
+    public void givenTonneAndkgs_WhenEqual_ReturnTrue() throws QuantityMeasurementException {
+        EqualityCheck value1 = new EqualityCheck(1.0, Unit.TONNE);
+        EqualityCheck value2 = new EqualityCheck(1000.0, Unit.KILOGRAMS);
+        boolean isEqual = EqualityCheck.compare(value1, value2);
+        Assert.assertTrue(isEqual);
+    }
 
 }
