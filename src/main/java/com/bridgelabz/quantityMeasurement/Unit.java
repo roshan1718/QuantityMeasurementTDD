@@ -14,7 +14,4 @@ public enum Unit {
         this.value = value;
     }
 
-    public double getConvertedValue() {
-        return value;
-    }
 }

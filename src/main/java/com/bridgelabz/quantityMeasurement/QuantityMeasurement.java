@@ -6,7 +6,7 @@ public class QuantityMeasurement {
     private final Unit unitValue;
 
     public QuantityMeasurement(double value, Unit unitValue) {
-        this.value = value * unitValue.getConvertedValue();
+        this.value = value * unitValue.value;
         this.unitValue = unitValue;
     }
 
