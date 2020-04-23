@@ -221,6 +221,7 @@ public class QuantityMeasurementTest {
         boolean isEqual = EqualityCheck.compare(value1, value2);
         Assert.assertTrue(isEqual);
     }
+
     @Test
     public void givenLitreAndMl_WhenEquals_ReturnTrue() throws QuantityMeasurementException {
         EqualityCheck value1 = new EqualityCheck(1.0, Unit.LITRE);
