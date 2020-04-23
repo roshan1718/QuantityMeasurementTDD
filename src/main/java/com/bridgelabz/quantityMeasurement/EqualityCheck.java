@@ -19,7 +19,7 @@ public class EqualityCheck {
     }
 
     public static double addition(EqualityCheck value1, EqualityCheck value2) {
-        return value1.value+value2.value;
+        return value1.value + value2.value;
     }
 
     @Override

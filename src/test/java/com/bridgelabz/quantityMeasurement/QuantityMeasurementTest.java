@@ -251,5 +251,12 @@ public class QuantityMeasurementTest {
         double result = EqualityCheck.addition(value1, value2);
         Assert.assertEquals(1001, result, 0);
     }
-
+    //TEST FOR TEMPERATURE
+    @Test
+    public void givenTemperature_WhenEqual_ReturnTrue() throws QuantityMeasurementException {
+        EqualityCheck value1 = new EqualityCheck(212.0, Unit.FAHRENHEIT);
+        EqualityCheck value2 = new EqualityCheck(100.0, Unit.CELSIUS);
+        boolean isEqual = EqualityCheck.compare(value1, value2);
+        Assert.assertTrue(isEqual);
+    }
 }
