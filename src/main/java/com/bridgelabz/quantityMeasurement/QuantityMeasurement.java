@@ -1,16 +1,16 @@
 package com.bridgelabz.quantityMeasurement;
 
-public class EqualityCheck {
+public class QuantityMeasurement {
 
     public double value;
     private final Unit unitValue;
 
-    public EqualityCheck(double value, Unit unitValue) {
+    public QuantityMeasurement(double value, Unit unitValue) {
         this.value = value * unitValue.getConvertedValue();
         this.unitValue = unitValue;
     }
 
-    public static boolean compare(EqualityCheck value1, EqualityCheck value2)
+    public static boolean compare(QuantityMeasurement value1, QuantityMeasurement value2)
             throws QuantityMeasurementException {
         if (value1 == null || value2 == null)
             throw new QuantityMeasurementException(QuantityMeasurementException.
@@ -18,7 +18,7 @@ public class EqualityCheck {
         return value1.equals(value2);
     }
 
-    public static double addition(EqualityCheck value1, EqualityCheck value2) {
+    public static double addition(QuantityMeasurement value1, QuantityMeasurement value2) {
         return value1.value + value2.value;
     }
 
@@ -26,7 +26,7 @@ public class EqualityCheck {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        EqualityCheck EqualityCheck = (EqualityCheck) o;
-        return Double.compare(EqualityCheck.value, value) == 0 ;
+        QuantityMeasurement QuantityMeasurement = (QuantityMeasurement) o;
+        return Double.compare(QuantityMeasurement.value, value) == 0 ;
     }
 }
