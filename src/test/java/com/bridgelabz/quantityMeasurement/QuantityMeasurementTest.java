@@ -198,11 +198,20 @@ public class QuantityMeasurementTest {
         double result = EqualityCheck.addition(value1, value2);
         Assert.assertEquals(3, result, 0);
     }
+
+    //TEST FOR VOLUMES IN GALLON, LITRE AND ML
     @Test
-    public void givenGallonandLitres_WhenGetAdded_ReturnResult() {
+    public void givenGallonAndLitres_WhenGetAdded_ReturnResult() {
         EqualityCheck value1 = new EqualityCheck(1.0, Unit.GALLON);
         EqualityCheck value2 = new EqualityCheck(3.78, Unit.LITRE);
         double result = EqualityCheck.addition(value1, value2);
         Assert.assertEquals(7.56, result, 0);
+    }
+    @Test
+    public void givenLitreAndML_WhenGetAdded_ReturnResult() {
+        EqualityCheck value1 = new EqualityCheck(1.0, Unit.LITRE);
+        EqualityCheck value2 = new EqualityCheck(1000, Unit.ML);
+        double result = EqualityCheck.addition(value1, value2);
+        Assert.assertEquals(2.0, result, 0);
     }
 }
