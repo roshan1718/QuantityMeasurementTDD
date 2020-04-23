@@ -18,11 +18,9 @@ public class EqualityCheck {
         return value1.equals(value2);
     }
 
-
     public static double addition(EqualityCheck value1, EqualityCheck value2) {
         return value1.value+value2.value;
     }
-
 
     @Override
     public boolean equals(Object o) {
