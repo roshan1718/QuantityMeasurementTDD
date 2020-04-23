@@ -221,7 +221,6 @@ public class QuantityMeasurementTest {
         boolean isEqual = EqualityCheck.compare(value1, value2);
         Assert.assertTrue(isEqual);
     }
-
     @Test
     public void givenLitreAndMl_WhenEquals_ReturnTrue() throws QuantityMeasurementException {
         EqualityCheck value1 = new EqualityCheck(1.0, Unit.LITRE);
@@ -229,4 +228,14 @@ public class QuantityMeasurementTest {
         boolean isEqual = EqualityCheck.compare(value1, value2);
         Assert.assertTrue(isEqual);
     }
+
+    //TEST FOR KILOGRAMS,GRAMS AND TONNE
+    @Test
+    public void givenKgAndGm_WhenEqual_ReturnTrue() throws QuantityMeasurementException {
+        EqualityCheck value1 = new EqualityCheck(1.0, Unit.KILOGRAMS);
+        EqualityCheck value2 = new EqualityCheck(1000.0, Unit.GRAMS);
+        boolean isEqual = EqualityCheck.compare(value1, value2);
+        Assert.assertTrue(isEqual);
+    }
+
 }
