@@ -214,4 +214,18 @@ public class QuantityMeasurementTest {
         double result = EqualityCheck.addition(value1, value2);
         Assert.assertEquals(2.0, result, 0);
     }
+    @Test
+    public void givenGallonAndLitre_WhenEquals_ReturnTrue() throws QuantityMeasurementException {
+        EqualityCheck value1 = new EqualityCheck(1.0, Unit.GALLON);
+        EqualityCheck value2 = new EqualityCheck(3.78, Unit.LITRE);
+        boolean isEqual = EqualityCheck.compare(value1, value2);
+        Assert.assertTrue(isEqual);
+    }
+    @Test
+    public void givenLitreAndMl_WhenEquals_ReturnTrue() throws QuantityMeasurementException {
+        EqualityCheck value1 = new EqualityCheck(1.0, Unit.LITRE);
+        EqualityCheck value2 = new EqualityCheck(1000, Unit.ML);
+        boolean isEqual = EqualityCheck.compare(value1, value2);
+        Assert.assertTrue(isEqual);
+    }
 }
