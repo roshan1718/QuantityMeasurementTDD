@@ -3,25 +3,34 @@ package com.bridgelabz.quantityMeasurement;
 public class QuantityMeasurement {
 
     public double value;
-    private final Unit unitValue;
+    public Unit unit;
 
-    public QuantityMeasurement(double value, Unit unitValue) {
-        this.value = value * unitValue.value;
-        this.unitValue = unitValue;
+    public QuantityMeasurement(Double value, Unit unitValue) {
+        this.value = value;
+        this.unit = unitValue;
+    }
+    public boolean compare(QuantityMeasurement that) throws QuantityMeasurementException {
+        if (this == null || that == null){
+            throw new QuantityMeasurementException(QuantityMeasurementException.ExceptionType.NULL_POINTER_EXCEPTION,"value is null");
+        }
+        if (this.unit.typeOfUnit.equals(that.unit.typeOfUnit)) {
+            Double firstValue = this.unit.converter(this.value);
+            Double secondValue = that.unit.converter(that.value);
+            return firstValue.equals(secondValue);
+        }
+        throw new QuantityMeasurementException(QuantityMeasurementException.ExceptionType.UNIT_MISMATCH, "Unit is not equal");
     }
 
-    public static boolean compare(QuantityMeasurement value1, QuantityMeasurement value2)
-            throws QuantityMeasurementException {
-        if (value1 == null || value2 == null)
-            throw new QuantityMeasurementException(QuantityMeasurementException.
-                    ExceptionType.NULL_POINTER_EXCEPTION, "Null Object");
-        return value1.equals(value2);
+    public double addition(QuantityMeasurement that) throws QuantityMeasurementException {
+        if(that.unit.typeOfUnit == TypeOfUnit.TEMPERATURE && this.unit.typeOfUnit == TypeOfUnit.TEMPERATURE)
+            throw new QuantityMeasurementException(QuantityMeasurementException.ExceptionType.TEMPERATURE_CANNOT_ADD, "Temperature addition is not possible");
+        if (this.unit.typeOfUnit.equals(that.unit.typeOfUnit)) {
+            double firstValue = this.unit.converter(this.value);
+            double secondValue = that.unit.converter(that.value);
+            return firstValue + secondValue;
+        }
+        throw new QuantityMeasurementException(QuantityMeasurementException.ExceptionType.UNIT_MISMATCH, "Unit is not equal");
     }
-
-    public static double addition(QuantityMeasurement value1, QuantityMeasurement value2) {
-        return value1.value + value2.value;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

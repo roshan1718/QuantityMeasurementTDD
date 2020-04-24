@@ -10,6 +10,7 @@ public class QuantityMeasurementException extends Exception {
     }
 
     public enum ExceptionType {
-        NULL_POINTER_EXCEPTION
+        NULL_POINTER_EXCEPTION, UNIT_MISMATCH,
+        TEMPERATURE_CANNOT_ADD;
     }
 }
