@@ -260,4 +260,52 @@ public class QuantityMeasurementTest {
         Assert.assertTrue(isEqual);
     }
 
+    @Test
+    public void givenFeetAndGram_WhenNotEqual_ReturnFalse() {
+        QuantityMeasurement value1 = new QuantityMeasurement(1.0, Unit.FEET);
+        QuantityMeasurement value2 = new QuantityMeasurement(1.0, Unit.GRAMS);
+        boolean isEqual = false;
+        try {
+            isEqual = value1.compare(value2);
+        } catch (QuantityMeasurementException e) {
+            Assert.assertEquals(QuantityMeasurementException.ExceptionType.UNIT_MISMATCH, e.type);
+        }
+        Assert.assertFalse(isEqual);
+    }
+    @Test
+    public void givenInchAndKG_WhenNotEqual_ReturnFalse() {
+        QuantityMeasurement value1 = new QuantityMeasurement(12.0, Unit.INCH);
+        QuantityMeasurement value2 = new QuantityMeasurement(12.0, Unit.KILOGRAMS);
+        boolean isEqual = false;
+        try {
+            isEqual = value1.compare(value2);
+        } catch (QuantityMeasurementException e) {
+            Assert.assertEquals(QuantityMeasurementException.ExceptionType.UNIT_MISMATCH, e.type);
+        }
+        Assert.assertFalse(isEqual);
+    }
+    @Test
+    public void givenFeetAndGallone_WhenNotEqual_ReturnFalse() {
+        QuantityMeasurement value1 = new QuantityMeasurement(1.0, Unit.FEET);
+        QuantityMeasurement value2 = new QuantityMeasurement(3.78, Unit.GALLON);
+        boolean isEqual = false;
+        try {
+            isEqual = value1.compare(value2);
+        } catch (QuantityMeasurementException e) {
+            Assert.assertEquals(QuantityMeasurementException.ExceptionType.UNIT_MISMATCH, e.type);
+        }
+        Assert.assertFalse(isEqual);
+    }
+    @Test
+    public void givenTemperature_WhenAdded_ReturnTrue() {
+        QuantityMeasurement value1 = new QuantityMeasurement(212.0, Unit.FAHRENHEIT);
+        QuantityMeasurement value2 = new QuantityMeasurement(100.0, Unit.CELSIUS);
+        double result = 0;
+        try {
+            result = value1.addition(value2);
+        } catch (QuantityMeasurementException e) {
+            Assert.assertEquals(QuantityMeasurementException.ExceptionType.TEMPERATURE_CANNOT_ADD, e.type);
+        }
+        Assert.assertEquals(0.0, result, 0);
+    }
 }
