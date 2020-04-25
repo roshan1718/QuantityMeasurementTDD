@@ -1,75 +1,39 @@
 package com.bridgelabz.quantityMeasurement;
 
 public enum Unit {
-    FEET(TypeOfUnit.LENGTH) {
-        public double converter(double value) {
-            return value * 12;
-        }
-    },
-    INCH(TypeOfUnit.LENGTH) {
-        public double converter(double value) {
-            return value;
-        }
-    },
-    YARD(TypeOfUnit.LENGTH) {
-        public double converter(double value) {
-            return value * 36;
-        }
-    },
-    CENTIMETER(TypeOfUnit.LENGTH) {
-        public double converter(double value) {
-            return value * 0.4;
-        }
-    },
-    GALLON(TypeOfUnit.VOLUME) {
-        public double converter(double value) {
-            return value * 3.78;
-        }
-    },
-    LITRE(TypeOfUnit.VOLUME) {
-        public double converter(double value) {
-            return value;
-        }
-    },
-    ML(TypeOfUnit.VOLUME) {
-        public double converter(double value) {
-            return value * 0.001;
-        }
-    },
-    KILOGRAMS(TypeOfUnit.WEIGHT) {
-        public double converter(double value) {
-            return value;
-        }
-    },
-    GRAMS(TypeOfUnit.WEIGHT) {
-        public double converter(double value) {
-            return value * 0.001;
-        }
-    },
-    TONNE(TypeOfUnit.WEIGHT) {
-        public double converter(double value) {
-            return value * 1000;
-        }
-    },
-    FAHRENHEIT(TypeOfUnit.TEMPERATURE) {
-        public double converter(double value) {
-            return Math.round((value - 32) * 5 / 9);
-        }
-    },
-    CELSIUS(TypeOfUnit.TEMPERATURE) {
-        public double converter(double value) {
-            return value;
-        }
-    };
+    FEET(12.0, TypeOfUnit.LENGTH),
+    INCH(1.0, TypeOfUnit.LENGTH),
+    YARD(36.0, TypeOfUnit.LENGTH),
+    CENTIMETER(0.4, TypeOfUnit.LENGTH),
 
-    public TypeOfUnit typeOfUnit;
+    GALLON(3.78, TypeOfUnit.VOLUME),
+    LITRES(1, TypeOfUnit.VOLUME),
+    MILLILITERS(0.001, TypeOfUnit.VOLUME),
 
-    Unit(TypeOfUnit typeOfUnit) {
-        this.typeOfUnit = typeOfUnit;
+    KILOGRAMS(1.0, TypeOfUnit.WEIGHT),
+    GRAMS(0.001, TypeOfUnit.WEIGHT),
+    TONNE(1000, TypeOfUnit.WEIGHT),
+
+    FAHRENHEIT(5.0 / 9.0, TypeOfUnit.TEMPERATURE),
+    CELSIUS(9.0 / 5.0, TypeOfUnit.TEMPERATURE);
+
+
+    Double baseValue;
+    TypeOfUnit type;
+
+    Unit(double baseValue, TypeOfUnit type) {
+        this.baseValue = baseValue;
+        this.type = type;
     }
 
-    public double converter(double value) {
-        return 0.0;
+    public Double convertToBaseValue(Double value, Unit unit) {
+        switch (unit) {
+            case FAHRENHEIT:
+                return ((value - 32) * (baseValue));
+            case CELSIUS:
+                return ((value * (baseValue)) + 32);
+            default:
+                return value * baseValue;
+        }
     }
-
 }
